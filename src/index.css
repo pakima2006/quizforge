@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-forge-bg text-forge-text font-body antialiased;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(6, 182, 212, 0.04) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-forge-accent/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-forge-surface;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-forge-muted rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-forge-accent/50;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(22, 22, 31, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 30, 46, 0.8);
+  }
+
+  .glass-hover {
+    @apply glass transition-all duration-300;
+  }
+
+  .glass-hover:hover {
+    background: rgba(26, 26, 38, 0.9);
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(124, 58, 237, 0.1);
+  }
+
+  .btn-primary {
+    @apply bg-forge-accent hover:bg-forge-accent-bright text-white font-display font-semibold
+           px-6 py-3 rounded-xl transition-all duration-200
+           shadow-glow-sm hover:shadow-glow hover:-translate-y-0.5
+           active:translate-y-0 active:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply bg-forge-card hover:bg-forge-muted text-forge-text font-display font-semibold
+           px-6 py-3 rounded-xl border border-forge-border hover:border-forge-accent/30
+           transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply text-forge-text-muted hover:text-forge-text font-body
+           px-4 py-2 rounded-lg transition-all duration-200
+           hover:bg-forge-muted/50;
+  }
+
+  .btn-danger {
+    @apply bg-forge-rose/10 hover:bg-forge-rose/20 text-forge-rose font-display font-semibold
+           px-6 py-3 rounded-xl border border-forge-rose/20 hover:border-forge-rose/40
+           transition-all duration-200;
+  }
+
+  .input-field {
+    @apply bg-forge-surface border border-forge-border rounded-xl px-4 py-3
+           text-forge-text placeholder-forge-text-dim font-body
+           focus:outline-none focus:border-forge-accent/50 focus:ring-1 focus:ring-forge-accent/30
+           transition-all duration-200 w-full;
+  }
+
+  .card {
+    @apply bg-forge-card border border-forge-border rounded-2xl shadow-card;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 hover:border-forge-accent/20 
+           hover:shadow-card-hover hover:-translate-y-1 cursor-pointer;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-display font-semibold;
+  }
+
+  .badge-accent {
+    @apply badge bg-forge-accent/15 text-forge-accent-glow border border-forge-accent/20;
+  }
+
+  .badge-emerald {
+    @apply badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .badge-amber {
+    @apply badge bg-amber-500/15 text-amber-400 border border-amber-500/20;
+  }
+
+  .badge-rose {
+    @apply badge bg-rose-500/15 text-rose-400 border border-rose-500/20;
+  }
+
+  .badge-cyan {
+    @apply badge bg-cyan-500/15 text-cyan-400 border border-cyan-500/20;
+  }
+
+  .section-title {
+    @apply font-display font-bold text-2xl text-forge-text;
+  }
+
+  .label {
+    @apply block text-sm font-display font-medium text-forge-text-muted mb-2;
+  }
+
+  .progress-bar {
+    @apply h-1.5 bg-forge-border rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+    background: linear-gradient(90deg, #7c3aed, #06b6d4);
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.04) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(135deg, #f59e0b, #f43f5e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background: linear-gradient(#16161f, #16161f) padding-box,
+                linear-gradient(135deg, rgba(124,58,237,0.4), rgba(6,182,212,0.2)) border-box;
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+  }
+}
